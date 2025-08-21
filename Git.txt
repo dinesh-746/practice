@@ -1,0 +1,1 @@
+Git is a distributed version control system that tracks changes in source code during software development. It allows multiple developers to collaborate efficiently, manage branches, and roll back changes when needed. Platforms like GitHub and GitLab enhance Git’s capabilities with hosting and collaboration tools.

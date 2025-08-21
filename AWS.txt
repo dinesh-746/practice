@@ -1,0 +1,1 @@
+AWS is a leading cloud platform offering scalable computing, storage, and networking services. It enables businesses to deploy applications globally with high availability and minimal infrastructure costs. Popular services include EC2, S3, and Lambda.
