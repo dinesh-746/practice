@@ -1,4 +1,6 @@
-function greet() {
-  return "Hello, World!";
+function greet(name) {
+  return `Hello, ${name}!`;
 }
-console.log(greet());
+
+const username = "Leo";
+console.log(greet(username));
