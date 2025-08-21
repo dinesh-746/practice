@@ -1,1 +1,0 @@
-Linux is a powerful, open-source operating system known for its stability, security, and flexibility. It's widely used in servers, embedded systems, and development environments. Its command-line interface gives users deep control over system operations.
