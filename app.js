@@ -1,3 +1,5 @@
+const readline = require("readline");
+
 function greet(name) {
   const hours = new Date().getHours();
   let timeOfDay;
@@ -15,7 +17,7 @@ function greet(name) {
 
 function getQuote() {
   const quotes = [
-    "Keep pushing forward 🚀",
+    "Keep pushing forward",
     "Stay positive, work hard, make it happen",
     "Believe you can and you're halfway there",
     "Success is no accident",
@@ -25,9 +27,14 @@ function getQuote() {
   return quotes[randomIndex];
 }
 
-// Get username from command-line args
-const args = process.argv.slice(2); 
-const username = args[0] || "Guest";
+// Setup readline for interactive input
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-console.log(greet(username));
-console.log(getQuote());
+rl.question("Enter your name: ", (username) => {
+  console.log(greet(username || "Guest"));
+  console.log(getQuote());
+  rl.close();
+});
