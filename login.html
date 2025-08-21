@@ -85,18 +85,69 @@
   </div>
 
   <script>
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      const errorMessage = document.getElementById("error-message");
+  function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const errorMessage = document.getElementById("error-message");
+    const loginBox = document.querySelector(".login-container");
+    const loginBtn = document.querySelector("button");
 
-      if (username === "admin" && password === "12345") {
-        alert("Login successful!");
-        window.location.href = "welcome.html";
-      } else {
-        errorMessage.textContent = "Invalid username or password.";
-      }
+    // Reset error message
+    errorMessage.textContent = "";
+
+    // Disable button temporarily to prevent spamming
+    loginBtn.disabled = true;
+    loginBtn.style.opacity = "0.7";
+
+    // Validation check
+    if (username === "" || password === "") {
+      errorMessage.textContent = "⚠ Please fill in both fields.";
+      loginBox.classList.add("shake");
+      setTimeout(() => loginBox.classList.remove("shake"), 500);
+      loginBtn.disabled = false;
+      loginBtn.style.opacity = "1";
+      return;
     }
-  </script>
+
+    // Dummy authentication check
+    if (username === "admin" && password === "12345") {
+      errorMessage.style.color = "limegreen";
+      errorMessage.textContent = "✅ Login successful! Redirecting...";
+
+      // Add success glow
+      loginBox.classList.add("success-glow");
+
+      setTimeout(() => {
+        window.location.href = "welcome.html";
+      }, 2000); // Delay for animation
+    } else {
+      errorMessage.style.color = "#ff6b6b";
+      errorMessage.textContent = "❌ Invalid username or password.";
+      loginBox.classList.add("shake");
+      setTimeout(() => loginBox.classList.remove("shake"), 500);
+      loginBtn.disabled = false;
+      loginBtn.style.opacity = "1";
+    }
+  }
+</script>
+<style>
+  /* Shake animation */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+  }
+  .shake {
+    animation: shake 0.4s ease;
+  }
+
+  /* Success glow */
+  .success-glow {
+    box-shadow: 0 0 25px rgba(0,255,127,0.7) !important;
+    transition: box-shadow 0.3s ease;
+  }
+</style>
 </body>
 </html>
