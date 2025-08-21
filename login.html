@@ -3,77 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
 
+  /* Animated background blobs */
+  body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: float 10s infinite ease-in-out alternate;
+  }
+  body::before {
+    top: -100px;
+    left: -100px;
+    background: rgba(102,126,234,0.6);
+  }
+  body::after {
+    bottom: -100px;
+    right: -100px;
+    background: rgba(118,75,162,0.6);
+  }
+
+  @keyframes float {
+    from { transform: translateY(0px); }
+    to   { transform: translateY(60px); }
+  }
+
+  .login-container {
+    position: relative;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 340px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 45px rgba(0,0,0,0.6);
+  }
+
+  .login-container h2 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: #f8f8f8;
+    text-shadow: 0 0 10px rgba(102,126,234,0.8);
+  }
+
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    outline: none;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .login-container input::placeholder {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .login-container input:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 12px rgba(102,126,234,0.8), 0 0 20px rgba(118,75,162,0.6);
+  }
+
+  .login-container button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(102,126,234,0.7);
+  }
+
+  .login-container button:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    box-shadow: 0 0 25px rgba(102,126,234,1), 0 0 35px rgba(118,75,162,1);
+    transform: translateY(-2px);
+  }
+
+  .error {
+    color: #ff6b6b;
+    font-size: 14px;
+    margin-top: 12px;
+    text-shadow: 0 0 8px rgba(255,107,107,0.6);
+  }
+
+  /* Responsive */
+  @media (max-width: 400px) {
     .login-container {
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      width: 320px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 90%;
+      padding: 30px 20px;
     }
+  }
+</style>
 
-    .login-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
-
-    .login-container h2 {
-      margin-bottom: 25px;
-      color: #333;
-      font-size: 24px;
-    }
-
-    .login-container input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .login-container input:focus {
-      border-color: #667eea;
-      box-shadow: 0 0 8px rgba(102,126,234,0.4);
-      outline: none;
-    }
-
-    .login-container button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .login-container button:hover {
-      background: linear-gradient(135deg, #5a67d8, #6b46c1);
-    }
-
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-  </style>
 </head>
 <body>
   <div class="login-container">
@@ -112,7 +165,7 @@
     // Dummy authentication check
     if (username === "admin" && password === "12345") {
       errorMessage.style.color = "limegreen";
-      errorMessage.textContent = "Login done";
+      errorMessage.textContent = "Login successful!!!!";
 
       // Add success glow
       loginBox.classList.add("success-glow");
