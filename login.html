@@ -165,7 +165,7 @@
     // Dummy authentication check
     if (username === "admin" && password === "12345") {
       errorMessage.style.color = "limegreen";
-      errorMessage.textContent = "✅ Login successful! Redirecting...";
+      errorMessage.textContent = "Login successful! Redirecting...";
 
       // Add success glow
       loginBox.classList.add("success-glow");
@@ -175,7 +175,7 @@
       }, 2000); // Delay for animation
     } else {
       errorMessage.style.color = "#ff6b6b";
-      errorMessage.textContent = "❌ Invalid username or password.";
+      errorMessage.textContent = "Invalid username or password.";
       loginBox.classList.add("shake");
       setTimeout(() => loginBox.classList.remove("shake"), 500);
       loginBtn.disabled = false;
