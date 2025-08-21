@@ -1,4 +1,3 @@
-
 function greet(name) {
   const hours = new Date().getHours();
   let timeOfDay;
@@ -22,11 +21,13 @@ function getQuote() {
     "Success is no accident",
     "Dream big. Work hard. Stay focused"
   ];
-
   const randomIndex = Math.floor(Math.random() * quotes.length);
   return quotes[randomIndex];
 }
 
-const username = "Leo";
+// Get username from command-line args
+const args = process.argv.slice(2); 
+const username = args[0] || "Guest";
+
 console.log(greet(username));
 console.log(getQuote());
