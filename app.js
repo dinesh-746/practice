@@ -14,5 +14,19 @@ function greet(name) {
   return `Good ${timeOfDay}, ${name}!`;
 }
 
+function getQuote() {
+  const quotes = [
+    "Keep pushing forward 🚀",
+    "Stay positive, work hard, make it happen",
+    "Believe you can and you're halfway there",
+    "Success is no accident",
+    "Dream big. Work hard. Stay focused"
+  ];
+
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
+
 const username = "Leo";
 console.log(greet(username));
+console.log(getQuote());
