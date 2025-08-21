@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 24px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 8px rgba(102,126,234,0.4);
+      outline: none;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error" id="error-message"></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorMessage = document.getElementById("error-message");
+
+      if (username === "admin" && password === "12345") {
+        alert("Login successful!");
+        window.location.href = "welcome.html";
+      } else {
+        errorMessage.textContent = "Invalid username or password.";
+      }
+    }
+  </script>
+</body>
+</html>
